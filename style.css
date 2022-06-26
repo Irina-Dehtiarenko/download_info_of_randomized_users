@@ -12,34 +12,34 @@ body {
 	background-color: rgb(161, 161, 161);
 }
 
+form {
+	line-height: 30px;
+}
+
+div.user-list {
+	display: none;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	max-width: 70vw;
+	margin: 30px 50px;
+	padding: 20px 20px;
+	background-color: rgba(32, 32, 32, .3);
+	color: rgb(255, 255, 255);
+	border-radius: 10px;
+}
+
 header,
 form,
 div.user-list {
 	margin: 30px 50px;
 }
 
-form {
-	line-height: 30px;
-}
-
-div.user-list {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: flex-start;
-	justify-content: center;
-	max-width: 70vw;
-	margin: 30px 50px;
-	padding: 20px 20px;
-	background-color: rgb(32, 32, 32);
-	color: rgb(255, 255, 255);
-	border-radius: 10px;
-}
-
 div.user {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	justify-content: center;
+	justify-content: flex-start;
 	width: 250px;
 	margin: 20px;
 	font-size: 12px;
