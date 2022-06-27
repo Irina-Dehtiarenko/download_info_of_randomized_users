@@ -27,6 +27,39 @@ const showUser = (users) => {
 	divUsers.style.display = 'flex'
 	divUsers.textContent = ''
 
+	const showInfoUser = (e) => {
+
+		const divUser = e.target
+		const divInfoUser = document.createElement('div')
+		divInfoUser.classList.add('info')
+		divInfoUser.style.display = 'flex'
+		divUser.appendChild(divInfoUser)
+
+		const pFullname = document.createElement('p')
+		const pAge = document.createElement('p')
+		const pCountry = document.createElement('p')
+		const pPhoneNumber = document.createElement('p')
+		const pEmail = document.createElement('p')
+
+		divInfoUser.appendChild(pFullname)
+		divInfoUser.appendChild(pAge)
+		divInfoUser.appendChild(pCountry)
+		divInfoUser.appendChild(pPhoneNumber)
+		divInfoUser.appendChild(pEmail)
+
+		users.forEach(user => {
+			if (`${user.name.title} ${user.name.first} ${user.name.last}` === divUser.textContent) {
+				pAge.textContent = `Age: ${user.dob.age}`
+				pCountry.textContent = `${user.location.country}`
+				pPhoneNumber.textContent = `Phone number: ${user.phone}`
+				pEmail.textContent = `E-mail: ${user.email}`
+			}
+		});
+		divUser.addEventListener('mouseleave', () => {
+			divInfoUser.remove()
+		})
+	}
+
 	users.forEach(user => {
 		const divUser = document.createElement('div')
 		divUser.classList.add('user')
@@ -39,6 +72,8 @@ const showUser = (users) => {
 		divUser.appendChild(imgUser)
 		divUser.appendChild(h2Fullname)
 		divUsers.appendChild(divUser)
+
+		divUser.addEventListener('mouseenter', showInfoUser)
 	});
 }
 
@@ -47,9 +82,10 @@ button.addEventListener('click', (e) => {
 	number = inputNumber.value
 	gender = selectGender.value
 
-	if (number === '' || number === '0') {
+	if (number === '' || number <= '0') {
 		divUsers.textContent = ''
 		divUsers.style.display = 'none'
+		inputNumber.value = ''
 		return alert('Musisz wpisać ilość użytkowników')
 	} else {
 		getUser()
